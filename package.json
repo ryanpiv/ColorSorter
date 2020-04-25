@@ -1,11 +1,30 @@
 {
-  "name": "jsoncolorview",
+  "name": "template",
   "version": "1.0.0",
-  "description": "",
+  "description": "- https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig\r -",
   "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "stylelint": "^13.3.3",
+    "stylelint-config-property-sort-order-smacss": "^6.0.0",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-order": "^4.0.0",
+    "stylelint-scss": "^3.17.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanpiv/Template.git"
+  },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanpiv/Template/issues"
+  },
+  "homepage": "https://github.com/ryanpiv/Template#readme"
 }
