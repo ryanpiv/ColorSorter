@@ -1,0 +1,41 @@
+.nav {
+  width: 100%;
+  max-width: 100%;
+  min-height: 50px;
+  background-color: #dcdcdc;
+
+  &__brand {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  &__ul {
+    width: 100%;
+  }
+
+  &__li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
+    margin: 10px;
+  }
+
+  &__li-settings {
+  }
+
+  &__li-settings--icon {
+    width: 40px;
+    height: 40px;
+    background-image: url("../assets/icon-settings.svg");
+  }
+
+  &__color {
+    width: 80px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+}
