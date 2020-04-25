@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>JSON Color Picker</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
+  <!-- BASE SITE STYLES -->
+  <link rel="stylesheet" href="css/reset.css">
+  <!-- UTILITIES AND LAYOUTS -->
+  <link rel="stylesheet" href="css/utility.css">
+  <link rel="stylesheet" href="css/layouts.css">
+  <!-- PAGES -->
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/nav/nav.css">
+</head>
+
+<body>
+  <main class="main">
+    <div class="c-copy l-flex l-absolute-center u-height-0 u-width-0">
+      <span class="c-copy__value-container l-flex l-absolute-center">
+        <p class="c-copy__value"></p>
+      </span>
+    </div>
+    <nav class="nav l-flex l-align-center">
+      <ul class="nav__ul l-flex">
+        <li class="nav__li  nav__brand">
+          JSON Color Picker
+        </li>
+        <li class="nav__li nav__li-settings">
+          <i class="nav__li-settings--icon"></i>
+        </li>
+      </ul>
+    </nav>
+    <div class="c-grid l-flex u-width-100 u-height-100-vh js-grid">
+    </div>
+  </main>
+  <script src="js/util.js"></script>
+  <script src="js/grid.js"></script>
+  <script src="js/copy.js"></script>
+  <script src="js/colorSort.js"></script>
+</body>
+
+</html>
