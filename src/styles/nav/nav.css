@@ -1,0 +1,42 @@
+.nav {
+  background-color: #dcdcdc;
+  min-height: 50px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.nav__brand {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.nav__ul {
+  width: 100%;
+}
+
+.nav__li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px;
+  min-height: 40px;
+  min-width: 40px;
+}
+
+.nav__li-settings {
+
+}
+
+.nav__li-settings--icon {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../assets/svgs/icon-settings.svg");
+}
+
+.nav__color {
+  border-radius: 5px;
+  height: 60px;
+  width: 80px;
+  border: 1px solid black;
+}
