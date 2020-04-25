@@ -1,0 +1,95 @@
+.main {
+  height: 100vh;
+  font-family: 'Didact Gothic', sans-serif;
+}
+
+.c-grid {
+  flex-wrap: wrap;
+  height: calc(100% - 50px);
+
+  &__item {
+    flex-grow: 1;
+    min-width: 25%;
+    min-height: 25%;
+  }
+
+  &__item-text {
+    width: 100%;
+    background-color: #e4e3e338;
+    font-size: 18px;
+    text-align: center;
+    text-transform: lowercase;
+  }
+}
+
+.c-copy {
+  position: absolute;
+  z-index: 100;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+
+  &__value {
+    opacity: 0.8;
+    font-size: 26px;
+  }
+
+  &__value-container {
+    width: 100%;
+    height: 100px;
+    opacity: 0.4;
+    background-color: #dcdcdc;
+  }
+}
+
+.is-opaque {
+  opacity: 0;
+}
+
+.is-shown {
+  opacity: 1;
+}
+
+.l-flex {
+  display: flex;
+}
+
+.l-absolute-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.l-justify-center {
+  justify-content: center;
+}
+
+.l-align-center {
+  align-items: center;
+}
+
+.l-none {
+  display: none;
+}
+
+.l-block {
+  display: block;
+}
+
+.u-width-100 {
+  width: 100%;
+}
+
+.u-height-100 {
+  height: 100%;
+}
+
+.u-width-0 {
+  width: 0;
+}
+
+.u-height-0 {
+  height: 0;
+}
+
+.u-height-100-vh {
+  height: 100vh;
+}
