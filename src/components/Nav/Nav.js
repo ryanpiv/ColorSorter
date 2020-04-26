@@ -2,7 +2,11 @@ import React from 'react';
 import NavHistoryColor from './NavHistoryColor';
 
 export const Nav = ({ ...props }) => {
-  const { setClipboardColor, colorsHistory } = props;
+  const { setClipboardColor, colorsHistory, setIsSettingsModalOpen } = props;
+
+  const handleSettingsClick = () => {
+    setIsSettingsModalOpen(true);
+  };
 
   return (
     <nav className="nav l-flex l-align-center">
@@ -14,7 +18,7 @@ export const Nav = ({ ...props }) => {
             setClipboardColor={setClipboardColor}
           />
         })}
-        <li className="nav__li nav__li-settings">
+        <li className="nav__li nav__li-settings" onClick={handleSettingsClick}>
           <i className="nav__li-settings--icon"></i>
         </li>
       </ul>
