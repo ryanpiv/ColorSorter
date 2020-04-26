@@ -14,7 +14,7 @@ export const ColorCell = ({ ...props }) => {
         backgroundColor: `#${color.hexVal}`,
       }}>
       <span className="c-color-grid__item-text"
-      >{color.hexVal}</span>
+      >{color.name}</span>
     </div >
   );
 }

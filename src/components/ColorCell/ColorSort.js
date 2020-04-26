@@ -1,7 +1,7 @@
-export const colorObj = (hexVal, colorName) => {
+export const colorObj = (hexVal, name) => {
   return {
     hexVal,
-    colorName,
+    name,
   }
 };
 

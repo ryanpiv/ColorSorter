@@ -1,6 +1,7 @@
 {
   "description": "- https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig\r -",
   "main": "index.js",
+  "homepage": "http://ryanpiv.github.io/color-sorter",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -31,7 +32,9 @@
     "test": "react-scripts test",
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "private": true,
   "eslintConfig": {
