@@ -4,11 +4,15 @@ import './styles/reset.css';
 import './styles/main.scss';
 import ColorSorter from './ColorSorter';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
+import initialState from './initialState';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ColorSorter />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <React.StrictMode>
+      <ColorSorter props={initialState} />
+    </React.StrictMode>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

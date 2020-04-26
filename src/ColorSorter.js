@@ -1,18 +1,66 @@
-import React from 'react';
-import Nav from './components/Nav';
-import ColorCell from './components/ColorCell';
+import React, { useEffect, useState } from 'react';
+import Nav from './components/Nav/Nav';
+import ColorCell from './components/ColorCell/ColorCell';
+import { colorObj, constructColor, sortColorsByHue } from './components/ColorCell/ColorSort';
 
-function ColorSorter() {
+export const ColorSorter = ({ ...props }) => {
+  const [urlParams, setUrlParams] = useState([]);
+  const [colorsArray, setColorsArray] = useState([]);
+  const [clipboardColor, setClipboardColor] = useState();
+  const [colorsHistory, setColorsHistory] = useState([]);
+
+  useEffect(() => {
+    setUrlParams(new URLSearchParams(window.location.search));
+    // addClassListener('click', '.js-grid-item', (event) => {
+    //   let bgColor = findColorFromDiv(event);
+    //   bgColor = hexFromRGB(bgColor);
+    //   copyColor(bgColor);
+    //   addColorToHistory(bgColor);
+    // });
+  }, []);
+
+  useEffect(() => {
+    let colorArray = [];
+    let formattedColors = [];
+
+    urlParams.forEach((value, key) => {
+      let color = colorObj(value, key);
+      colorArray.push(color);
+    });
+
+    colorArray.forEach((color) => {
+      formattedColors.push(constructColor(color));
+    });
+
+    formattedColors = sortColorsByHue(formattedColors);
+
+    setColorsArray(formattedColors);
+  }, [urlParams]);
+
+  useEffect(() => {
+    console.log(clipboardColor);
+    if (clipboardColor) {
+      const tempColorsHistory = [...colorsHistory];
+      tempColorsHistory.push(clipboardColor);
+      setColorsHistory(tempColorsHistory);
+    }
+  }, [clipboardColor])
+
   return (
-    <main class="main">
-      <div class="c-copy l-flex l-absolute-center u-height-0 u-width-0">
-        <span class="c-copy__value-container l-flex l-absolute-center">
-          <p class="c-copy__value"></p>
+    <main className="main">
+      <div className="c-copy l-flex l-absolute-center u-height-0 u-width-0">
+        <span className="c-copy__value-container l-flex l-absolute-center">
+          <p className="c-copy__value"></p>
         </span>
       </div>
-      <Nav />
-      <div class="c-grid l-flex u-width-100 u-height-100-vh js-grid">
-        <ColorCell />
+      <Nav colorsHistory={colorsHistory} setClipboardColor={setClipboardColor} />
+      <div className="c-grid l-flex u-width-100 u-height-100-vh js-grid">
+        {colorsArray && colorsArray.map((color, i) => {
+          return <ColorCell
+            color={color}
+            setClipboardColor={setClipboardColor}
+            key={i} />
+        })}
       </div>
     </main>
   );
