@@ -21,9 +21,10 @@
     min-width: 40px;
     min-height: 40px;
     margin: 10px;
-  }
 
-  &__li-settings {
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__li-settings--icon {

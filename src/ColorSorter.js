@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import Nav from './components/Nav/Nav';
 import ColorCell from './components/ColorCell/ColorCell';
 import { colorObj, constructColor, sortColorsByHue } from './components/ColorCell/ColorSort';
+import { fallbackCopyTextToClipboard } from './components/Utils/Utils';
 
 export const ColorSorter = ({ ...props }) => {
   const [urlParams, setUrlParams] = useState([]);
   const [colorsArray, setColorsArray] = useState([]);
   const [clipboardColor, setClipboardColor] = useState();
   const [colorsHistory, setColorsHistory] = useState([]);
+  const [isCopyActive, setIsCopyActive] = useState(false);
+  const isCopyActiveClass = isCopyActive === true ? ' is-shown' : '';
 
   useEffect(() => {
     setUrlParams(new URLSearchParams(window.location.search));
@@ -40,21 +43,46 @@ export const ColorSorter = ({ ...props }) => {
   useEffect(() => {
     console.log(clipboardColor);
     if (clipboardColor) {
+      copyText(clipboardColor.hexVal);
+
       const tempColorsHistory = [...colorsHistory];
       tempColorsHistory.push(clipboardColor);
       setColorsHistory(tempColorsHistory);
     }
   }, [clipboardColor])
 
+  const animateCopiedText = () => {
+    setIsCopyActive(true);
+    setTimeout(() => {
+      setIsCopyActive(false);
+    }, 800);
+  }
+
+  const copyText = (text) => {
+    if (!navigator.clipboard) {
+      fallbackCopyTextToClipboard(text);
+      animateCopiedText();
+    }
+    navigator.clipboard.writeText(text).then(function () {
+      console.log('copied: ', text);
+      animateCopiedText();
+    }, function (err) {
+      alert('Async: Could not copy text: ', err);
+    });
+  };
+
   return (
     <main className="c-color-sorter">
-      <div className="c-color-copy l-flex l-absolute-center u-height-0 u-width-0">
+      <div className={`c-color-copy${isCopyActiveClass} l-flex l-absolute-center`}
+        style={{
+          backgroundColor: clipboardColor && `#${clipboardColor.hexVal}`,
+        }} >
         <span className="c-color-copy__value-container l-flex l-absolute-center">
-          <p className="c-color-copy__value"></p>
+          <p className="c-color-copy__value">{clipboardColor && clipboardColor.hexVal}</p>
         </span>
       </div>
       <Nav colorsHistory={colorsHistory} setClipboardColor={setClipboardColor} />
-      <div className="c-color-grid l-flex u-width-100 u-height-100-vh">
+      <div className="c-color-grid l-flex">
         {colorsArray && colorsArray.map((color, i) => {
           return <ColorCell
             color={color}

@@ -1,5 +1,4 @@
 import React from 'react';
-import { copyTextToClipboard } from './Copy';
 
 export const ColorCell = ({ ...props }) => {
   const { color, setClipboardColor } = props;
@@ -8,18 +7,13 @@ export const ColorCell = ({ ...props }) => {
     setClipboardColor(color);
   }
 
-  const copyColor = (bgColor) => {
-    let msg = copyTextToClipboard(bgColor);
-    if (msg) { console.log(msg); };
-  };
-
   return (
     <div className="c-color-grid__item l-flex l-absolute-center"
+      onClick={handleClick}
       style={{
         backgroundColor: `#${color.hexVal}`,
       }}>
       <span className="c-color-grid__item-text"
-        onClick={handleClick}
       >{color.hexVal}</span>
     </div >
   );

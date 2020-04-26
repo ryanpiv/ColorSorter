@@ -1,11 +1,17 @@
 .c-color-grid {
   flex-wrap: wrap;
+  width: 100%;
   height: calc(100% - 50px);
+  height: 100vh;
 
   &__item {
     flex-grow: 1;
     min-width: 25%;
     min-height: 25%;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__item-text {
