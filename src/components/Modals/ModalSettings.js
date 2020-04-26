@@ -28,7 +28,7 @@ export const ModalSettings = ({ ...props }) => {
       3. if values are found, massage the array for the type of regex
     */
 
-    regExArr.map((value, i) => {
+    regExArr.forEach((value, i) => {
       const matchedArr = text.match(value);
       if (matchedArr.length > 0) {
         switch (i) {
@@ -52,7 +52,7 @@ export const ModalSettings = ({ ...props }) => {
   const seperateKeysFromValues = (colorsArr) => {
     const params = new URLSearchParams();
 
-    colorsArr.map((value, i) => {
+    colorsArr.forEach((value, i) => {
       let color = hexOrRgbMatch(value);
       let name = sassVarMatch(value);
       params.set(name, color);

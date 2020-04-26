@@ -32,7 +32,7 @@ export const ColorSorter = ({ ...props }) => {
       formattedColors.push(constructColor(color));
     });
 
-    formattedColors = sortColorsByHue(formattedColors);
+    formattedColors = sortColorsByHue([...formattedColors]);
 
     setColorsArray(formattedColors);
   }, [urlParams]);
@@ -41,7 +41,7 @@ export const ColorSorter = ({ ...props }) => {
     if (clipboardColor) {
       copyText(clipboardColor.hexVal);
     }
-  }, [clipboardColor]);
+  }, [clipboardColor]); //eslint-disable-line react-hooks/exhaustive-deps
 
   const animateCopiedText = () => {
     setIsCopyActive(true);
