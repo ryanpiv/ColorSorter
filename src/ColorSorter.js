@@ -41,20 +41,20 @@ export const ColorSorter = ({ ...props }) => {
     if (clipboardColor) {
       copyText(clipboardColor.hexVal);
     }
-  }, [clipboardColor])
+  }, [clipboardColor]);
 
   const animateCopiedText = () => {
     setIsCopyActive(true);
     setTimeout(() => {
       setIsCopyActive(false);
     }, 800);
-  }
+  };
 
   const updateColorsHistory = () => {
     const tempColorsHistory = [...colorsHistory];
     tempColorsHistory.push(clipboardColor);
     setColorsHistory(tempColorsHistory);
-  }
+  };
 
   const copyText = (text) => {
     if (!navigator.clipboard) {
@@ -98,6 +98,15 @@ export const ColorSorter = ({ ...props }) => {
             setClipboardColor={setClipboardColor}
             key={i} />
         })}
+        {colorsArray.length === 0 &&
+          <ColorCell
+            color={{
+              name: 'Try loading some colors by clicking the gear icon in the nav bar',
+              hexVal: '909090',
+            }}
+            setClipboardColor={() => { return; }}
+          />
+        }
       </div>
     </main>
   );
