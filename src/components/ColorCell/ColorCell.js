@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { copyTextToClipboard } from './Copy';
 
 export const ColorCell = ({ ...props }) => {
@@ -14,11 +14,11 @@ export const ColorCell = ({ ...props }) => {
   };
 
   return (
-    <div className="c-grid__item l-flex l-absolute-center"
+    <div className="c-color-grid__item l-flex l-absolute-center"
       style={{
         backgroundColor: `#${color.hexVal}`,
       }}>
-      <span className="c-grid__item-text"
+      <span className="c-color-grid__item-text"
         onClick={handleClick}
       >{color.hexVal}</span>
     </div >

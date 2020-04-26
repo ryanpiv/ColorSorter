@@ -9,6 +9,9 @@ export const NavHistoryColor = ({ ...props }) => {
 
   return (
     <li className="nav__li nav__color"
+      style={{
+        backgroundColor: `#${color.hexVal}`,
+      }}
       onClick={handleColorClick} >
       {color.hexVal}
     </li>

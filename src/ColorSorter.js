@@ -47,14 +47,14 @@ export const ColorSorter = ({ ...props }) => {
   }, [clipboardColor])
 
   return (
-    <main className="main">
-      <div className="c-copy l-flex l-absolute-center u-height-0 u-width-0">
-        <span className="c-copy__value-container l-flex l-absolute-center">
-          <p className="c-copy__value"></p>
+    <main className="c-color-sorter">
+      <div className="c-color-copy l-flex l-absolute-center u-height-0 u-width-0">
+        <span className="c-color-copy__value-container l-flex l-absolute-center">
+          <p className="c-color-copy__value"></p>
         </span>
       </div>
       <Nav colorsHistory={colorsHistory} setClipboardColor={setClipboardColor} />
-      <div className="c-grid l-flex u-width-100 u-height-100-vh js-grid">
+      <div className="c-color-grid l-flex u-width-100 u-height-100-vh">
         {colorsArray && colorsArray.map((color, i) => {
           return <ColorCell
             color={color}
