@@ -83,6 +83,7 @@ export const ColorSorter = ({ ...props }) => {
         setIsSettingsModalOpen={setIsSettingsModalOpen}
         session={session}
         setSession={setSession}
+        setUrlParams={setUrlParams}
       />
       <div className={`c-color-copy${isCopyActiveClass} l-flex l-absolute-center`}
         style={{
