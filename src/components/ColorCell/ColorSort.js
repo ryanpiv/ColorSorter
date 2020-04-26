@@ -1,4 +1,4 @@
-export const colorObj = (hexVal, colorName) => { //define a Color class for the color objects
+export const colorObj = (hexVal, colorName) => {
   return {
     hexVal,
     colorName,
@@ -8,9 +8,9 @@ export const colorObj = (hexVal, colorName) => { //define a Color class for the 
 export const constructColor = (colorObj) => {
   let { hexVal } = colorObj;
   /* Get the RGB values to calculate the Hue. */
-  var r = parseInt(hexVal.substring(0, 2), 16) / 255;
-  var g = parseInt(hexVal.substring(2, 4), 16) / 255;
-  var b = parseInt(hexVal.substring(4, 6), 16) / 255;
+  var r = colorObj.r || parseInt(hexVal.substring(0, 2), 16) / 255;
+  var g = colorObj.g || parseInt(hexVal.substring(2, 4), 16) / 255;
+  var b = colorObj.b || parseInt(hexVal.substring(4, 6), 16) / 255;
 
   /* Getting the Max and Min values for Chroma. */
   var max = Math.max.apply(Math, [r, g, b]);
@@ -46,6 +46,7 @@ export const constructColor = (colorObj) => {
   colorObj.red = parseInt(hexVal.substring(0, 2), 16);
   colorObj.green = parseInt(hexVal.substring(2, 4), 16);
   colorObj.blue = parseInt(hexVal.substring(4, 6), 16);
+  // colorObj.rgb =
   return colorObj;
 };
 

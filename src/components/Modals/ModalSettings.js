@@ -90,6 +90,7 @@ export const ModalSettings = ({ ...props }) => {
               className="c-modal-settings__check"
               value="hex"
               defaultChecked={session.settings.hex.checked}
+              readOnly
               onClick={() => {
                 setSession({
                   ...session,
@@ -108,6 +109,7 @@ export const ModalSettings = ({ ...props }) => {
               name="c-modal-settings__check"
               className="c-modal-settings__check"
               value="hex"
+              disabled
               defaultChecked={session.settings.rgb.checked}
               onClick={() => {
                 setSession({
@@ -120,14 +122,14 @@ export const ModalSettings = ({ ...props }) => {
               }} />
           </div>
 
-          <h3 className="c-heading c-heading--h2">Generate Your Colors</h3>
+          <h3 className="c-heading c-heading--h2">Generate Colors from Sass Vars</h3>
           <div className="c-modal-settings__generate">
             <h3 className="c-heading c-heading--h3">
               Sass color variables:
             </h3>
             <p className="c-subheading">
               $color-light-black: #262f2f;<br />
-              $color-gray: rgba(235, 239, 242, 0.5);<br />
+              {/* $color-gray: rgba(235, 239, 242, 0.5);<br /> */}
               $color-pure-gray: #969da0;<br />
               $color-light-gray: #e0e7eb;<br />
             </p>

@@ -1,11 +1,11 @@
 @mixin close($color: $black, $size: 45) {
-  // @include screen-reader;
   display: block;
   position: relative;
   width: #{$size}px;
   height: #{$size}px;
   border: 0;
   background-color: transparent;
+  cursor: pointer;
 
   &::after, &::before {
     content: '';
@@ -23,6 +23,12 @@
 
   &::before {
     transform: rotate(45deg);
+  }
+
+  &:hover {
+    &::before, &::after {
+      background-color: #fff;
+    }
   }
 }
 

@@ -43,6 +43,14 @@ export const hexFromRGB = (rgb) => {
   return rgbToHex(r, g, b);
 }
 
+export const hexMatch = (hexValue) => {
+  return hexValue.match(/[^#]+(?=;)/g);
+}
+
+export const rgbMatch = (rgbValue) => {
+  return rgbValue.match(/[^:]+(?=;)/g);
+}
+
 export const hexOrRgbMatch = (hexValue) => {
   return hexValue.match(/[^:|#]+(?=;)/g);
 };

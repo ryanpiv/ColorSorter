@@ -25,15 +25,10 @@ export const ColorSorter = ({ ...props }) => {
   }, [session]);
 
   useEffect(() => {
-    let colorArray = [];
     let formattedColors = [];
 
     urlParams.forEach((value, key) => {
       let color = colorObj(value, key);
-      colorArray.push(color);
-    });
-
-    colorArray.forEach((color) => {
       formattedColors.push(constructColor(color));
     });
 
