@@ -6,10 +6,12 @@ import { colorObj, constructColor, sortColorsByHue } from './components/ColorCel
 import { fallbackCopyTextToClipboard } from './components/Utils/Utils';
 
 export const ColorSorter = ({ ...props }) => {
+  const previousSession = props;
   const [urlParams, setUrlParams] = useState([]);
   const [colorsArray, setColorsArray] = useState([]);
   const [clipboardColor, setClipboardColor] = useState();
   const [colorsHistory, setColorsHistory] = useState([]);
+  const [session, setSession] = useState(previousSession);
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isCopyActive, setIsCopyActive] = useState(false);
   const isCopyActiveClass = isCopyActive === true ? ' is-shown' : '';
@@ -17,6 +19,10 @@ export const ColorSorter = ({ ...props }) => {
   useEffect(() => {
     setUrlParams(new URLSearchParams(window.location.search));
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('color-sorter', JSON.stringify(session));
+  }, [session]);
 
   useEffect(() => {
     let colorArray = [];
@@ -71,10 +77,12 @@ export const ColorSorter = ({ ...props }) => {
   };
 
   return (
-    <main className="c-color-sorter">
+    <main className={`c-color-sorter${isSettingsModalOpen ? ' is-blurred' : ''}`}>
       <ModalSettings
         isSettingsModalOpen={isSettingsModalOpen}
         setIsSettingsModalOpen={setIsSettingsModalOpen}
+        session={session}
+        setSession={setSession}
       />
       <div className={`c-color-copy${isCopyActiveClass} l-flex l-absolute-center`}
         style={{

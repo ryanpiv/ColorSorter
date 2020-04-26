@@ -7,10 +7,12 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import initialState from './initialState';
 
+const previousSession = JSON.parse(localStorage.getItem('color-sorter')) || initialState;
+
 ReactDOM.render(
   <BrowserRouter>
     <React.StrictMode>
-      <ColorSorter props={initialState} />
+      <ColorSorter {...previousSession} />
     </React.StrictMode>
   </BrowserRouter>,
   document.getElementById('root')

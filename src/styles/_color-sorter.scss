@@ -2,7 +2,11 @@
   height: 100vh;
   font-family: 'Didact Gothic', sans-serif;
 
-  .is-opaque {
+  &.is-opaque {
     opacity: 0;
+  }
+
+  &.is-blurred {
+    filter: blur(7px);
   }
 }

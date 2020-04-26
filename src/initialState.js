@@ -1,3 +1,12 @@
 export default {
-  appId: 'appId',
+  localStorageName: 'color-sorter',
+  settings: {
+    hex: {
+      checked: true,
+    },
+    rgb: {
+      checked: false,
+    },
+  },
+  lastSession: {}
 };

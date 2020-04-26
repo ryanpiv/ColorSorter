@@ -1,0 +1,23 @@
+.c-heading {
+  margin-top: 20px;
+  line-height: 1.7;
+
+  &--h1 {
+    border-bottom: 1px solid #7b7b7b;
+    font-size: 44px;
+  }
+
+  &--h2 {
+    font-size: 30px;
+  }
+
+  &--h3 {
+    font-size: 20px;
+  }
+}
+
+.c-subheading {
+  margin-bottom: 10px;
+  font-size: 16px;
+  line-height: 1.2;
+}
