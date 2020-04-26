@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/color-sorter/static/css/main.40ce88bb.chunk.css",
+    "main.js": "/color-sorter/static/js/main.158ba644.chunk.js",
+    "main.js.map": "/color-sorter/static/js/main.158ba644.chunk.js.map",
+    "runtime-main.js": "/color-sorter/static/js/runtime-main.8aa9387b.js",
+    "runtime-main.js.map": "/color-sorter/static/js/runtime-main.8aa9387b.js.map",
+    "static/js/2.b1f7a776.chunk.js": "/color-sorter/static/js/2.b1f7a776.chunk.js",
+    "static/js/2.b1f7a776.chunk.js.map": "/color-sorter/static/js/2.b1f7a776.chunk.js.map",
+    "index.html": "/color-sorter/index.html",
+    "precache-manifest.a9fcce1f5587fad3a7f1ca88a28a727e.js": "/color-sorter/precache-manifest.a9fcce1f5587fad3a7f1ca88a28a727e.js",
+    "service-worker.js": "/color-sorter/service-worker.js",
+    "static/css/main.40ce88bb.chunk.css.map": "/color-sorter/static/css/main.40ce88bb.chunk.css.map",
+    "static/js/2.b1f7a776.chunk.js.LICENSE.txt": "/color-sorter/static/js/2.b1f7a776.chunk.js.LICENSE.txt",
+    "static/media/main.scss": "/color-sorter/static/media/icon-settings.43cbf410.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8aa9387b.js",
+    "static/js/2.b1f7a776.chunk.js",
+    "static/css/main.40ce88bb.chunk.css",
+    "static/js/main.158ba644.chunk.js"
+  ]
+}
