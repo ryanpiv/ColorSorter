@@ -4,7 +4,6 @@ export const NavHistoryColor = ({ ...props }) => {
   const { setClipboardColor, color } = props;
 
   const handleColorClick = () => {
-    console.log(color);
     setClipboardColor(color);
   }
 
