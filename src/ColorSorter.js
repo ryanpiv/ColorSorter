@@ -35,11 +35,20 @@ export const ColorSorter = ({ ...props }) => {
     formattedColors = sortColorsByHue([...formattedColors]);
 
     setColorsArray(formattedColors);
+    setSession({
+      ...session,
+      session: {
+        ...session.colors,
+        colors: formattedColors
+      }
+    }
+    )
   }, [urlParams]);
 
   useEffect(() => {
     if (clipboardColor) {
       copyText(clipboardColor.hexVal);
+      console.log(clipboardColor);
     }
   }, [clipboardColor]); //eslint-disable-line react-hooks/exhaustive-deps
 
@@ -47,7 +56,7 @@ export const ColorSorter = ({ ...props }) => {
     setIsCopyActive(true);
     setTimeout(() => {
       setIsCopyActive(false);
-    }, 800);
+    }, 1400);
   };
 
   const updateColorsHistory = () => {

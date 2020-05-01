@@ -8,5 +8,5 @@ export default {
       checked: false,
     },
   },
-  lastSession: {}
+  colors: {}
 };

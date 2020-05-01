@@ -9,9 +9,11 @@
     font-weight: 600;
   }
 
-  &__ul {
-    width: 100%;
-    min-height: 80px;
+  &__color {
+    width: 80px;
+    height: 60px;
+    border: 1px solid black;
+    border-radius: 5px;
   }
 
   &__li {
@@ -30,24 +32,26 @@
     }
   }
 
-  &__li-settings {
+  &__li--left-auto {
     margin-left: auto;
-
-    &:hover {
-      border-color: #007acc;
-    }
   }
 
-  &__li-settings--icon {
+  &__li-icon {
     width: 40px;
     height: 40px;
+    background-size: cover;
+  }
+
+  &__li-icon--download {
+    background-image: url("../assets/icon-download.png");
+  }
+
+  &__li-icon--settings {
     background-image: url("../assets/icon-settings.svg");
   }
 
-  &__color {
-    width: 80px;
-    height: 60px;
-    border: 1px solid black;
-    border-radius: 5px;
+  &__ul {
+    width: 100%;
+    min-height: 80px;
   }
 }
