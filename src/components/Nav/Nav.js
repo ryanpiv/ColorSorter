@@ -10,20 +10,22 @@ export const Nav = ({ ...props }) => {
 
   const handleDownloadClick = () => {
     const colors = JSON.parse(localStorage.getItem('color-sorter')).session.colors;
-    const text = colors.map((obj) => {
-      return `${obj.name}:#${obj.hexVal}`;
-    });
+    if (colors && colors.length > 0) {
+      const text = colors.map((obj) => {
+        return `${obj.name}:#${obj.hexVal}`;
+      });
 
-    let element = document.createElement('a');
-    element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    element.setAttribute('download', 'colors.txt');
+      let element = document.createElement('a');
+      element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+      element.setAttribute('download', 'colors.txt');
 
-    element.style.display = 'none';
-    document.body.appendChild(element);
+      element.style.display = 'none';
+      document.body.appendChild(element);
 
-    element.click();
+      element.click();
 
-    document.body.removeChild(element);
+      document.body.removeChild(element);
+    }
   };
 
   return (
