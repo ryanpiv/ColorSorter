@@ -122,6 +122,26 @@ export const ModalSettings = ({ ...props }) => {
               }} />
           </div>
 
+          <div className="c-modal-settings__settings-group">
+            <label className="c-modal-settings__label" htmlFor="c-modal-settings__check-rgb">HSL</label>
+            <input type="checkbox"
+              id="c-modal-settings__check"
+              name="c-modal-settings__check"
+              className="c-modal-settings__check"
+              value="hex"
+              disabled
+              defaultChecked={session.settings.hsl.checked}
+              onClick={() => {
+                setSession({
+                  ...session,
+                  settings: {
+                    ...settings,
+                    hsl: { checked: !settings.hsl.checked }
+                  }
+                })
+              }} />
+          </div>
+
           <h3 className="c-heading c-heading--h2">Generate Colors from Sass Vars</h3>
           <div className="c-modal-settings__generate">
             <h3 className="c-heading c-heading--h3">

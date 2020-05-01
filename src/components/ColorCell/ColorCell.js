@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const ColorCell = ({ ...props }) => {
-  const { color, setClipboardColor } = props;
+  const { color, setClipboardColor, session } = props;
 
   const handleClick = () => {
     setClipboardColor(color);
@@ -13,8 +13,7 @@ export const ColorCell = ({ ...props }) => {
       style={{
         backgroundColor: `#${color.hexVal}`,
       }}>
-      <span className="c-color-grid__item-text"
-      >{color.name}</span>
+      <span className="c-color-grid__item-text">{color.name}</span>
     </div >
   );
 }

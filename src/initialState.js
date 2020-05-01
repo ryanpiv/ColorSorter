@@ -7,6 +7,9 @@ export default {
     rgb: {
       checked: false,
     },
+    hsl: {
+      checked: false,
+    },
   },
   colors: {}
 };
