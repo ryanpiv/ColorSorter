@@ -8,14 +8,14 @@ export const ColorCell = ({ ...props }) => {
   }
 
   return (
-    <div className="c-color-grid__item l-flex l-absolute-center"
+    <li className="c-color-grid__item l-flex l-absolute-center"
       onClick={handleClick}
       style={{
         backgroundColor: `#${color.hexVal}`,
       }}>
       <span className="c-color-grid__item-text"
       >{color.name}</span>
-    </div >
+    </li>
   );
 }
 

@@ -7,12 +7,12 @@
   &__brand {
     font-size: 16px;
     font-weight: 600;
-  }
+  } // .nav__brand
 
   &__ul {
     width: 100%;
-    min-height: 80px;
-  }
+    min-height: var(--nav-height);
+  } // .nav__ul
 
   &__li {
     display: flex;
@@ -27,27 +27,27 @@
     &:hover {
       border-color: #fff;
       cursor: pointer;
-    }
-  }
+    } // .nav__li:hover
+  } // .nav__li
 
   &__li-settings {
     margin-left: auto;
 
     &:hover {
       border-color: #007acc;
-    }
-  }
+    } // .nav__li-settings:hover
+  } // .nav__li-settings
 
   &__li-settings--icon {
     width: 40px;
     height: 40px;
     background-image: url("../assets/icon-settings.svg");
-  }
+  } // .nav__li-settings--icon
 
   &__color {
     width: 80px;
     height: 60px;
     border: 1px solid black;
     border-radius: 5px;
-  }
-}
+  } // .nav__color
+} // .nav
