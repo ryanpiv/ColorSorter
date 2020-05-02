@@ -2,6 +2,8 @@ import React, { useRef } from 'react';
 import Modal from 'react-modal';
 import { replaceURLState } from '../Utils/URL';
 import { hexOrRgbMatch, sassVarMatch } from '../Utils/Colors';
+import ModalSettingsCopyType from './ModalSettingsCopyType';
+import ModalSettingsDisplayType from './ModalSettingsDisplayType';
 
 Modal.setAppElement('#root');
 
@@ -81,46 +83,113 @@ export const ModalSettings = ({ ...props }) => {
         <div className="c-modal__content-container">
           <h2 className="c-heading c-heading--h1">Settings</h2>
 
-          <h3 className="c-heading c-heading--h2">Color Type to Copy</h3>
-          <div className="c-modal-settings__settings-group">
-            <label className="c-modal-settings__label" htmlFor="c-modal-settings__check-hex">Hex</label>
-            <input type="checkbox"
-              id="c-modal-settings__check"
-              name="c-modal-settings__check"
-              className="c-modal-settings__check"
-              value="hex"
-              defaultChecked={session.settings.hex.checked}
-              readOnly
-              onClick={() => {
-                setSession({
-                  ...session,
-                  settings: {
-                    ...settings,
-                    hex: { checked: !settings.hex.checked }
-                  }
-                })
-              }} />
-          </div>
+          <h3 className="c-heading c-heading--h2">Color Type to Copy to Clipboard and Download As</h3>
+          <ModalSettingsCopyType
+            session={session}
+            disabled={true}
+            displayName="Hex"
+            defaultChecked={session.settings.copy.hex.checked}
+            handleClick={() => {
+              setSession({
+                ...session,
+                settings: {
+                  ...settings,
+                  hex: { checked: !settings.copy.hex.checked }
+                }
+              })
+            }}
+          />
 
-          <div className="c-modal-settings__settings-group">
-            <label className="c-modal-settings__label" htmlFor="c-modal-settings__check-rgb">RGB</label>
-            <input type="checkbox"
-              id="c-modal-settings__check"
-              name="c-modal-settings__check"
-              className="c-modal-settings__check"
-              value="hex"
-              disabled
-              defaultChecked={session.settings.rgb.checked}
-              onClick={() => {
-                setSession({
-                  ...session,
-                  settings: {
-                    ...settings,
-                    rgb: { checked: !settings.rgb.checked }
+          <ModalSettingsCopyType
+            session={session}
+            disabled={true}
+            displayName="RGB"
+            defaultChecked={session.settings.copy.rgb.checked}
+            handleClick={() => {
+              setSession({
+                ...session,
+                settings: {
+                  ...settings,
+                  rgb: { checked: !settings.copy.rgb.checked }
+                }
+              })
+            }}
+          />
+
+          <ModalSettingsCopyType
+            session={session}
+            disabled={true}
+            displayName="HSL"
+            defaultChecked={session.settings.copy.hsl.checked}
+            handleClick={() => {
+              setSession({
+                ...session,
+                settings: {
+                  ...settings,
+                  hsl: { checked: !settings.copy.hsl.checked }
+                }
+              })
+            }}
+          />
+
+          <h3 className="c-heading c-heading--h2">Color Format to Display in Grid Cells</h3>
+          <ModalSettingsDisplayType
+            session={session}
+            disabled={false}
+            displayName="Hex"
+            defaultChecked={session.settings.display.hex.checked}
+            handleClick={() => {
+              setSession({
+                ...session,
+                settings: {
+                  ...session.settings,
+                  display: {
+                    ...session.settings.display,
+                    hex: { checked: !settings.display.hex.checked }
                   }
-                })
-              }} />
-          </div>
+                }
+              })
+            }}
+          />
+
+          <ModalSettingsDisplayType
+            session={session}
+            disabled={false}
+            displayName="RGB"
+            defaultChecked={session.settings.display.rgb.checked}
+            handleClick={() => {
+              setSession({
+                ...session,
+                settings: {
+                  ...session.settings,
+                  display: {
+                    ...session.settings.display,
+                    rgb: { checked: !settings.display.rgb.checked }
+                  }
+                }
+              })
+            }}
+          />
+
+          <ModalSettingsDisplayType
+            session={session}
+            disabled={false}
+            displayName="HSL"
+            defaultChecked={session.settings.display.hsl.checked}
+            handleClick={() => {
+              setSession({
+                ...session,
+                settings: {
+                  ...session.settings,
+                  display: {
+                    ...session.settings.display,
+                    hsl: { checked: !settings.display.hsl.checked }
+                  }
+                }
+              })
+            }}
+          />
+
 
           <h3 className="c-heading c-heading--h2">Generate Colors from Sass Vars</h3>
           <div className="c-modal-settings__generate">

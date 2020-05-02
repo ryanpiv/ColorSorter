@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Nav from './components/Nav/Nav';
 import ColorCell from './components/ColorCell/ColorCell';
 import ModalSettings from './components/Modals/ModalSettings'
-import { colorObj, constructColor, sortColorsByHue } from './components/ColorCell/ColorSort';
+import { colorObj, constructColor, sortColors } from './components/ColorCell/ColorSort';
 import { fallbackCopyTextToClipboard } from './components/Utils/Utils';
 
 export const ColorSorter = ({ ...props }) => {
@@ -32,9 +32,17 @@ export const ColorSorter = ({ ...props }) => {
       formattedColors.push(constructColor(color));
     });
 
-    formattedColors = sortColorsByHue([...formattedColors]);
+    formattedColors = sortColors([...formattedColors]);
 
     setColorsArray(formattedColors);
+    setSession({
+      ...session,
+      session: {
+        ...session.colors,
+        colors: formattedColors
+      }
+    }
+    )
   }, [urlParams]);
 
   useEffect(() => {
@@ -47,28 +55,23 @@ export const ColorSorter = ({ ...props }) => {
     setIsCopyActive(true);
     setTimeout(() => {
       setIsCopyActive(false);
-    }, 800);
-  };
-
-  const updateColorsHistory = () => {
-    const tempColorsHistory = [...colorsHistory];
-    tempColorsHistory.push(clipboardColor);
-    setColorsHistory(tempColorsHistory);
+    }, 1400);
   };
 
   const copyText = (text) => {
     if (!navigator.clipboard) {
       fallbackCopyTextToClipboard(text);
-      animateCopiedText();
-      updateColorsHistory();
     }
     navigator.clipboard.writeText(text).then(function () {
-      console.log('copied: ', text);
-      animateCopiedText();
-      updateColorsHistory();
     }, function (err) {
       alert('Async: Could not copy text: ', err);
+      return
     });
+    // debugger;
+    let temp = [...colorsHistory];
+    temp.push(clipboardColor);
+    setColorsHistory(temp);
+    animateCopiedText();
   };
 
   return (
@@ -85,7 +88,7 @@ export const ColorSorter = ({ ...props }) => {
           backgroundColor: clipboardColor && `#${clipboardColor.hexVal}`,
         }} >
         <span className="c-color-copy__value-container l-flex l-absolute-center">
-          <p className="c-color-copy__value">{clipboardColor && clipboardColor.hexVal}</p>
+          <p className="c-color-copy__value">Copied: #{clipboardColor && clipboardColor.hexVal}</p>
         </span>
       </div>
       <Nav colorsHistory={colorsHistory}
@@ -96,6 +99,7 @@ export const ColorSorter = ({ ...props }) => {
           return <ColorCell
             color={color}
             setClipboardColor={setClipboardColor}
+            session={session}
             key={i} />
         })}
         {colorsArray.length === 0 &&
@@ -105,6 +109,7 @@ export const ColorSorter = ({ ...props }) => {
               hexVal: '909090',
             }}
             setClipboardColor={() => { return; }}
+            session={session}
           />
         }
       </ul>
