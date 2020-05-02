@@ -94,7 +94,7 @@ export const ColorSorter = ({ ...props }) => {
       <Nav colorsHistory={colorsHistory}
         setClipboardColor={setClipboardColor}
         setIsSettingsModalOpen={setIsSettingsModalOpen} />
-      <div className="c-color-grid l-flex">
+      <ul className="c-color-grid">
         {colorsArray && colorsArray.map((color, i) => {
           return <ColorCell
             color={color}
@@ -112,7 +112,7 @@ export const ColorSorter = ({ ...props }) => {
             session={session}
           />
         }
-      </div>
+      </ul>
     </main>
   );
 }

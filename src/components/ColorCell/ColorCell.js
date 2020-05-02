@@ -9,7 +9,7 @@ export const ColorCell = ({ ...props }) => {
   }
 
   return (
-    <div className="c-color-grid__item l-flex l-absolute-center"
+    <li className="c-color-grid__item l-flex l-absolute-center"
       onClick={handleClick}
       style={{
         backgroundColor: `#${color.hexVal}`,
@@ -24,7 +24,7 @@ export const ColorCell = ({ ...props }) => {
       {displaySettings.hsl.checked &&
         <span className="c-color-grid__item-text">hsl({color.hsl && `${color.hsl[0]},\n${color.hsl[1]},\n${color.hsl[2]}\n${color.hsl[3]}`})</span>
       }
-    </div >
+    </li >
   );
 }
 

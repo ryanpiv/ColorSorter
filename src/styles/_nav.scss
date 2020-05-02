@@ -7,14 +7,14 @@
   &__brand {
     font-size: 16px;
     font-weight: 600;
-  }
+  } // .nav__brand
 
   &__color {
     width: 80px;
     height: 60px;
     border: 1px solid black;
     border-radius: 5px;
-  }
+  } // .nav__color
 
   &__li {
     display: flex;
@@ -28,37 +28,41 @@
     &:hover {
       border-color: #fff;
       cursor: pointer;
-    }
-  }
+    } // .nav__li:hover
+  } // .nav__li
 
   &__li--no-border {
     border-bottom: 2px solid transparent;
-  }
+
+    &:hover {
+      border-color: #007acc;
+    } // .nav__li--no-border:hover
+  } // .nav__li---no-border
 
   &__li--left-auto {
     margin-left: auto;
-  }
+  } // .nav__li--left-auto
 
   &__li-icon {
     width: 40px;
     height: 40px;
     background-size: cover;
-  }
+  } // .nav__li-icon
 
   &__li-icon--download {
     background-image: url("../assets/icon-download.png");
-  }
+  } // .nav__li-icon--download
 
   &__li-icon--github {
     background-image: url("../assets/icon-github.svg");
-  }
+  } // .nav__li-icon--github
 
   &__li-icon--settings {
     background-image: url("../assets/icon-settings.svg");
-  }
+  } // .nav__li-icon--settings
 
   &__ul {
     width: 100%;
-    min-height: 80px;
-  }
-}
+    min-height: var(--nav-height);
+  } // .nav__ul
+} // .nav

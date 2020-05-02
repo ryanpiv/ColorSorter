@@ -1,20 +1,15 @@
 .c-color-grid {
-  flex-wrap: wrap;
-  width: 100%;
-  height: calc(100% - 50px);
-  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--site-min-width), 1fr));
+  height: calc(100% - var(--nav-height));
 
   &__item {
-    flex-direction: column;
-    flex-grow: 1;
-    min-width: 25%;
-    min-height: 25%;
-    white-space: pre-wrap;
+    min-height: 100px;
 
     &:hover {
       cursor: pointer;
-    }
-  }
+    } // .c-color-grid__item:hover
+  } // .c-color-grid__item
 
   &__item-text {
     width: 100%;
@@ -23,5 +18,5 @@
     font-size: 18px;
     text-align: center;
     text-transform: lowercase;
-  }
-}
+  } // .c-color-grid__item-text
+} // .c-color-grid
