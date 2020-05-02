@@ -67,7 +67,10 @@ export const ColorSorter = ({ ...props }) => {
       alert('Async: Could not copy text: ', err);
       return
     });
-    setColorsHistory([...colorsHistory].push(clipboardColor));
+    // debugger;
+    let temp = [...colorsHistory];
+    temp.push(clipboardColor);
+    setColorsHistory(temp);
     animateCopiedText();
   };
 

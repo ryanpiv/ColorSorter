@@ -24,12 +24,15 @@
     min-width: 40px;
     min-height: 40px;
     margin: 10px;
-    border-bottom: 2px solid transparent;
 
     &:hover {
       border-color: #fff;
       cursor: pointer;
     }
+  }
+
+  &__li--no-border {
+    border-bottom: 2px solid transparent;
   }
 
   &__li--left-auto {
@@ -44,6 +47,10 @@
 
   &__li-icon--download {
     background-image: url("../assets/icon-download.png");
+  }
+
+  &__li-icon--github {
+    background-image: url("../assets/icon-github.svg");
   }
 
   &__li-icon--settings {
