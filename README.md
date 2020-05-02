@@ -33,6 +33,10 @@ npm run deploy
   - sliders to change grid items
 - hex picker to change colors
 - allow colors to be renamed from cell
+- sort order
+- transparency sort inclusion
+- different formats of color processing on paste
+  - rbg, hsl, sass, hex, etc.
 
 
 This project was sootstrapped with [Create React App](https://github.com/facebook/create-react-app).
