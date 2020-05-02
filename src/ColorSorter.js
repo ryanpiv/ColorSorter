@@ -96,6 +96,7 @@ export const ColorSorter = ({ ...props }) => {
           return <ColorCell
             color={color}
             setClipboardColor={setClipboardColor}
+            session={session}
             key={i} />
         })}
         {colorsArray.length === 0 &&
@@ -105,6 +106,7 @@ export const ColorSorter = ({ ...props }) => {
               hexVal: '909090',
             }}
             setClipboardColor={() => { return; }}
+            session={session}
           />
         }
       </div>

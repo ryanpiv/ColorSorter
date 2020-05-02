@@ -5,9 +5,11 @@
   height: 100vh;
 
   &__item {
+    flex-direction: column;
     flex-grow: 1;
     min-width: 25%;
     min-height: 25%;
+    white-space: pre-wrap;
 
     &:hover {
       cursor: pointer;
