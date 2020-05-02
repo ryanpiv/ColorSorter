@@ -4,6 +4,7 @@
   height: calc(100% - var(--nav-height));
 
   &__item {
+    flex-direction: column;
     min-height: 100px;
 
     &:hover {
