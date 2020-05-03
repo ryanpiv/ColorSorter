@@ -5,6 +5,7 @@ import ModalSettings from './components/Modals/ModalSettings'
 import { sortColors } from './components/ColorCell/ColorSort';
 import { fallbackCopyTextToClipboard } from './components/Utils/Utils';
 import { replaceURLState } from './components/Utils/URL';
+import { constructColor } from './components/ColorCell/ColorSort';
 
 export const ColorSorter = ({ ...props }) => {
   const previousSession = props || {};
@@ -17,6 +18,15 @@ export const ColorSorter = ({ ...props }) => {
   const [isSettingsModalOpen, setIsSettingsModalOpen] = useState(false);
   const [isCopyActive, setIsCopyActive] = useState(false);
   const isCopyActiveClass = isCopyActive === true ? ' is-shown' : '';
+
+  useEffect(() => {
+    const initialColorsArray = [];
+    urlParams.forEach((color, name) => {
+      const colorObj = constructColor({ name, color });
+      initialColorsArray.push(colorObj);
+    });
+    setColorsArray(initialColorsArray);
+  }, []);
 
   /*
     Change to ColorsArray:
@@ -38,17 +48,19 @@ export const ColorSorter = ({ ...props }) => {
       setSession(...session, session.colors)
   */
   useEffect(() => {
-    const params = new URLSearchParams();
-    formattedColors.forEach(value => {
-      const { color, name } = value;
-      params.set(name, color);
-    });
+    if (formattedColors) {
+      const params = new URLSearchParams();
+      formattedColors.forEach(value => {
+        const { color, name } = value;
+        params.set(name, color);
+      });
 
-    setSession({
-      ...session,
-      colors: formattedColors
-    });
-    setUrlParams(params);
+      setSession({
+        ...session,
+        colors: formattedColors
+      });
+      setUrlParams(params);
+    }
   }, [formattedColors]);
 
   useEffect(() => {
@@ -81,7 +93,6 @@ export const ColorSorter = ({ ...props }) => {
       alert('Async: Could not copy text: ', err);
       return
     });
-    // debugger;
     let temp = [...colorsHistory];
     temp.push(clipboardColor);
     setColorsHistory(temp);
@@ -96,7 +107,6 @@ export const ColorSorter = ({ ...props }) => {
         session={session}
         setColorsArray={setColorsArray}
         setSession={setSession}
-        setUrlParams={setUrlParams}
       />
       <div className={`c-color-copy${isCopyActiveClass} l-flex l-absolute-center`}
         style={{
