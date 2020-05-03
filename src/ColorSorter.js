@@ -2,15 +2,14 @@ import React, { useEffect, useState } from 'react';
 import Nav from './components/Nav/Nav';
 import ColorCell from './components/ColorCell/ColorCell';
 import ModalSettings from './components/Modals/ModalSettings'
-import { constructColor, sortColors } from './components/ColorCell/ColorSort';
+import { sortColors } from './components/ColorCell/ColorSort';
 import { fallbackCopyTextToClipboard } from './components/Utils/Utils';
 import { replaceURLState } from './components/Utils/URL';
-import { colorRegEx } from './components/ColorCell/ColorRegEx';
 
 export const ColorSorter = ({ ...props }) => {
-  const previousSession = props;
+  const previousSession = props || {};
   const [urlParams, setUrlParams] = useState(new URLSearchParams(window.location.search) || []);
-  const [colorsArray, setColorsArray] = useState([]);
+  const [colorsArray, setColorsArray] = useState(previousSession.colors || []);
   const [formattedColors, setFormattedColors] = useState([]);
   const [clipboardColor, setClipboardColor] = useState();
   const [colorsHistory, setColorsHistory] = useState([]);
@@ -32,7 +31,6 @@ export const ColorSorter = ({ ...props }) => {
     }
   }, [colorsArray]);
 
-
   /*
     Change to formattedColors:
       abstract key value pairs
@@ -52,22 +50,6 @@ export const ColorSorter = ({ ...props }) => {
     });
     setUrlParams(params);
   }, [formattedColors]);
-
-  /*
-    First load:
-      setUrlParams
-      setColorsArray(formattedColors)
-      setSession(colors:formattedColors)
-  */
-  useEffect(() => {
-    let colors = [];
-
-    urlParams.forEach((value, key) => {
-      colors.push(constructColor({ color: value, name: key }));
-    });
-
-    setColorsArray(colors);
-  }, []);
 
   useEffect(() => {
     replaceURLState(urlParams);

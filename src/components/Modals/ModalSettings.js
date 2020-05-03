@@ -185,7 +185,7 @@ export const ModalSettings = ({ ...props }) => {
               $color-light-gray: #e0e7eb;<br />
             </p>
 
-            {/* <h3 className="c-heading c-heading--h3">
+            <h3 className="c-heading c-heading--h3">
               Query strings:
             </h3>
             <p className="c-subheading">
@@ -199,7 +199,7 @@ export const ModalSettings = ({ ...props }) => {
               carrot=#e67e22,<br />
               alizarin=#e74c3c,<br />
               amethyst=9b59b6
-            </p> */}
+            </p>
 
             <textarea className="c-modal-settings__generate-text-area"
               placeholder="Paste colors:"
