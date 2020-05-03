@@ -108,7 +108,8 @@ export const ColorSorter = ({ ...props }) => {
       </div>
       <Nav colorsHistory={colorsHistory}
         setClipboardColor={setClipboardColor}
-        setIsSettingsModalOpen={setIsSettingsModalOpen} />
+        setIsSettingsModalOpen={setIsSettingsModalOpen}
+        session={session} />
       <ul className="c-color-grid">
         {formattedColors && formattedColors.map((color, i) => {
           return <ColorCell

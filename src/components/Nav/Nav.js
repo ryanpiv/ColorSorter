@@ -2,14 +2,14 @@ import React from 'react';
 import NavHistoryColor from './NavHistoryColor';
 
 export const Nav = ({ ...props }) => {
-  const { setClipboardColor, colorsHistory, setIsSettingsModalOpen } = props;
+  const { setClipboardColor, colorsHistory, setIsSettingsModalOpen, session } = props;
 
   const handleSettingsClick = () => {
     setIsSettingsModalOpen(true);
   };
 
   const handleDownloadClick = () => {
-    const colors = JSON.parse(localStorage.getItem('color-sorter')).session.colors;
+    const colors = session && session.colors;
     if (colors && colors.length > 0) {
       const text = colors.map((obj) => {
         return `${obj.name}:${obj.hex}`;

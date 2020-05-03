@@ -1,7 +1,5 @@
 import React, { useRef } from 'react';
 import Modal from 'react-modal';
-import { replaceURLState } from '../Utils/URL';
-import { hexOrRgbMatch, sassVarMatch } from '../Utils/Colors';
 import ModalSettingsCopyType from './ModalSettingsCopyType';
 import ModalSettingsDisplayType from './ModalSettingsDisplayType';
 import { colorRegEx } from '../ColorCell/ColorRegEx';
@@ -81,7 +79,6 @@ export const ModalSettings = ({ ...props }) => {
               })
             }}
           />
-
           <ModalSettingsCopyType
             session={session}
             disabled={true}
@@ -97,7 +94,6 @@ export const ModalSettings = ({ ...props }) => {
               })
             }}
           />
-
           <ModalSettingsCopyType
             session={session}
             disabled={true}
@@ -133,7 +129,6 @@ export const ModalSettings = ({ ...props }) => {
               })
             }}
           />
-
           <ModalSettingsDisplayType
             session={session}
             disabled={false}
@@ -152,7 +147,6 @@ export const ModalSettings = ({ ...props }) => {
               })
             }}
           />
-
           <ModalSettingsDisplayType
             session={session}
             disabled={false}
@@ -172,34 +166,44 @@ export const ModalSettings = ({ ...props }) => {
             }}
           />
 
-
-          <h3 className="c-heading c-heading--h2">Generate Colors from Sass Vars</h3>
+          <h3 className="c-heading c-heading--h2">Generate Colors</h3>
           <div className="c-modal-settings__generate">
-            <h3 className="c-heading c-heading--h3">
-              Sass color variables:
-            </h3>
+            <ul>
+              <li>Must end each line with a semi-colon!</li>
+              <li>Names are not required</li>
+              <li>Create a color name with an equals sign, such as colorName=#fff</li>
+            </ul>
+            <h3 className="c-heading c-heading--h3">Accepted formats: </h3>
+            <h3 className="c-heading c-heading--h3">Sass color variables:</h3>
             <p className="c-subheading">
               $color-light-black: #262f2f;<br />
-              {/* $color-gray: rgba(235, 239, 242, 0.5);<br /> */}
-              $color-pure-gray: #969da0;<br />
-              $color-light-gray: #e0e7eb;<br />
+              $color-gray: rgba(235, 239, 242, 0.5);<br />
+            </p>
+            <h3 className="c-heading c-heading--h3">Name Value Pairing</h3>
+            <p className="c-subheading">
+              emerald=2ecc71;<br />
+              carrot=#e67e22;<br />
+            </p>
+            <h3 className="c-heading c-heading--h3">Any Valid Hex of 3, 6 or 8 digits</h3>
+            <p className="c-subheading">
+              hex=000;<br />
+              hexColorName=#1e1e1e;<br />
+              #00ff0088;<br />
+              #fff;<br />
+              fff;<br />
+            </p>
+            <h3 className="c-heading c-heading--h3">HSL, RGB, RGBA</h3>
+            <p className="c-subheading">
+              hslColor=hsl(195, 100 %, 50 %);<br />
+              rgb(0, 191, 255);<br />
             </p>
 
-            <h3 className="c-heading c-heading--h3">
+            {/* <h3 className="c-heading c-heading--h3">
               Query strings:
             </h3>
             <p className="c-subheading">
               turquoise=1abc9c&emerald=2ecc71&carrot=e67e22&alizarin=e74c3c&amethyst=9b59b6&
-            </p>
-
-            <h3 className="c-heading c-heading--h3">Comma seperated</h3>
-            <p className="c-subheading">
-              turquoise=1abc9c,<br />
-              emerald=2ecc71,<br />
-              carrot=#e67e22,<br />
-              alizarin=#e74c3c,<br />
-              amethyst=9b59b6
-            </p>
+            </p> */}
 
             <textarea className="c-modal-settings__generate-text-area"
               placeholder="Paste colors:"
