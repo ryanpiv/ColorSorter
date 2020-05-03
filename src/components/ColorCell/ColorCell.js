@@ -12,17 +12,17 @@ export const ColorCell = ({ ...props }) => {
     <li className="c-color-grid__item l-flex l-absolute-center"
       onClick={handleClick}
       style={{
-        backgroundColor: `#${color.hexVal}`,
+        backgroundColor: `${color.hex}`,
       }}>
       <span className="c-color-grid__item-text">{color.name}</span>
       {displaySettings.hex.checked &&
-        <span className="c-color-grid__item-text">#{color.hexVal}</span>
+        <span className="c-color-grid__item-text">{color.hex}</span>
       }
       {displaySettings.rgb.checked &&
-        <span className="c-color-grid__item-text">rgb({color.rgb && `${color.rgb[0]}, ${color.rgb[1]}, ${color.rgb[2]}`})</span>
+        <span className="c-color-grid__item-text">RGB({color.rgb && `${color.rgb[0]}, ${color.rgb[1]}, ${color.rgb[2]}`})</span>
       }
       {displaySettings.hsl.checked &&
-        <span className="c-color-grid__item-text">hsl({color.hsl && `${color.hsl[0]},\n${color.hsl[1]},\n${color.hsl[2]}\n${color.hsl[3]}`})</span>
+        <span className="c-color-grid__item-text">HSL({color.hsl && `${color.hsl[0]},\n${color.hsl[1]}%,\n${color.hsl[2]}%,\n${color.hsl[3]}`})</span>
       }
     </li >
   );

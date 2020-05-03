@@ -1,26 +1,15 @@
 import Chroma from 'chroma-js';
 import { firstBy } from "thenby";
 
-export const colorObj = (hexVal, name) => {
-  return {
-    hexVal,
-    name,
-  }
-};
-
-const threeToSixDigitHex = (hexVal) => {
-  return `${hexVal.substring(0, 1)}${hexVal.substring(0, 1)}${hexVal.substring(1, 2)}${hexVal.substring(1, 2)}${hexVal.substring(2, 3)}${hexVal.substring(2, 3)}`;
-}
-
 export const constructColor = (colorObj) => {
-  let hexVal = colorObj.hexVal.length < 6 ? threeToSixDigitHex(colorObj.hexVal) : colorObj.hexVal;
+  const { color } = colorObj;
+  colorObj.hex = Chroma(color).hex();
+  colorObj.hsl = Chroma(color).hsl();
+  colorObj.rgb = Chroma(color).rgb();
 
-  colorObj.hexVal = hexVal;
-  colorObj.hsl = Chroma(hexVal).hsl();
-  colorObj.rgb = Chroma(hexVal).rgb();
-  colorObj.red = parseInt(hexVal.substring(0, 2), 16);
-  colorObj.green = parseInt(hexVal.substring(2, 4), 16);
-  colorObj.blue = parseInt(hexVal.substring(4, 6), 16);
+  colorObj.hsl[0] = Math.round(colorObj.hsl[0]) || 0;
+  colorObj.hsl[1] = Math.round(colorObj.hsl[1] * 100);
+  colorObj.hsl[2] = Math.round(colorObj.hsl[2] * 100);
   return colorObj;
 };
 

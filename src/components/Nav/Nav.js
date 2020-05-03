@@ -1,6 +1,5 @@
 import React from 'react';
 import NavHistoryColor from './NavHistoryColor';
-import { colorObj } from '../ColorCell/ColorSort';
 
 export const Nav = ({ ...props }) => {
   const { setClipboardColor, colorsHistory, setIsSettingsModalOpen } = props;
@@ -13,7 +12,7 @@ export const Nav = ({ ...props }) => {
     const colors = JSON.parse(localStorage.getItem('color-sorter')).session.colors;
     if (colors && colors.length > 0) {
       const text = colors.map((obj) => {
-        return `${obj.name}:#${obj.hexVal}`;
+        return `${obj.name}:${obj.hex}`;
       });
 
       let element = document.createElement('a');
@@ -28,8 +27,6 @@ export const Nav = ({ ...props }) => {
       document.body.removeChild(element);
     }
   };
-
-  console.log(colorsHistory);
 
   return (
     <nav className="nav l-flex l-align-center">

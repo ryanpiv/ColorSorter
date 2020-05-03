@@ -37,6 +37,10 @@ npm run deploy
 - transparency sort inclusion
 - different formats of color processing on paste
   - rbg, hsl, sass, hex, etc.
+- allow selecting of format for specific colors
+  - should also update url to use specified format
+- keep original uploaded color vals in array
+  - such as rgb(255, 255, 255) should be shown as such, not converted to hex unless specified to
 
 
 This project was sootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Nav from './components/Nav/Nav';
 import ColorCell from './components/ColorCell/ColorCell';
 import ModalSettings from './components/Modals/ModalSettings'
-import { colorObj, constructColor, sortColors } from './components/ColorCell/ColorSort';
+import { constructColor, sortColors } from './components/ColorCell/ColorSort';
 import { fallbackCopyTextToClipboard } from './components/Utils/Utils';
+import { replaceURLState } from './components/Utils/URL';
+import { colorRegEx } from './components/ColorCell/ColorRegEx';
 
 export const ColorSorter = ({ ...props }) => {
   const previousSession = props;
-  const [urlParams, setUrlParams] = useState([]);
+  const [urlParams, setUrlParams] = useState(new URLSearchParams(window.location.search) || []);
   const [colorsArray, setColorsArray] = useState([]);
+  const [formattedColors, setFormattedColors] = useState([]);
   const [clipboardColor, setClipboardColor] = useState();
   const [colorsHistory, setColorsHistory] = useState([]);
   const [session, setSession] = useState(previousSession);
@@ -16,38 +19,67 @@ export const ColorSorter = ({ ...props }) => {
   const [isCopyActive, setIsCopyActive] = useState(false);
   const isCopyActiveClass = isCopyActive === true ? ' is-shown' : '';
 
+  /*
+    Change to ColorsArray:
+      formatColors()
+      setFormattedColors( [...formattedColors ])
+  */
   useEffect(() => {
-    setUrlParams(new URLSearchParams(window.location.search));
+    if (colorsArray.length > 0) {
+      const temp = [...colorsArray];
+      sortColors(temp);
+      setFormattedColors(temp);
+    }
+  }, [colorsArray]);
+
+
+  /*
+    Change to formattedColors:
+      abstract key value pairs
+      setUrlParams(params)
+      setSession(...session, session.colors)
+  */
+  useEffect(() => {
+    const params = new URLSearchParams();
+    formattedColors.forEach(value => {
+      const { color, name } = value;
+      params.set(name, color);
+    });
+
+    setSession({
+      ...session,
+      colors: formattedColors
+    });
+    setUrlParams(params);
+  }, [formattedColors]);
+
+  /*
+    First load:
+      setUrlParams
+      setColorsArray(formattedColors)
+      setSession(colors:formattedColors)
+  */
+  useEffect(() => {
+    let colors = [];
+
+    urlParams.forEach((value, key) => {
+      colors.push(constructColor({ color: value, name: key }));
+    });
+
+    setColorsArray(colors);
   }, []);
+
+  useEffect(() => {
+    replaceURLState(urlParams);
+  }, [urlParams]);
 
   useEffect(() => {
     localStorage.setItem('color-sorter', JSON.stringify(session));
   }, [session]);
 
   useEffect(() => {
-    let formattedColors = [];
-
-    urlParams.forEach((value, key) => {
-      let color = colorObj(value, key);
-      formattedColors.push(constructColor(color));
-    });
-
-    formattedColors = sortColors([...formattedColors]);
-
-    setColorsArray(formattedColors);
-    setSession({
-      ...session,
-      session: {
-        ...session.colors,
-        colors: formattedColors
-      }
-    }
-    )
-  }, [urlParams]);
-
-  useEffect(() => {
     if (clipboardColor) {
-      copyText(clipboardColor.hexVal);
+      copyText(clipboardColor.hex);
     }
   }, [clipboardColor]); //eslint-disable-line react-hooks/exhaustive-deps
 
@@ -80,33 +112,34 @@ export const ColorSorter = ({ ...props }) => {
         isSettingsModalOpen={isSettingsModalOpen}
         setIsSettingsModalOpen={setIsSettingsModalOpen}
         session={session}
+        setColorsArray={setColorsArray}
         setSession={setSession}
         setUrlParams={setUrlParams}
       />
       <div className={`c-color-copy${isCopyActiveClass} l-flex l-absolute-center`}
         style={{
-          backgroundColor: clipboardColor && `#${clipboardColor.hexVal}`,
+          backgroundColor: clipboardColor && `${clipboardColor.hex}`,
         }} >
         <span className="c-color-copy__value-container l-flex l-absolute-center">
-          <p className="c-color-copy__value">Copied: #{clipboardColor && clipboardColor.hexVal}</p>
+          <p className="c-color-copy__value">Copied: #{clipboardColor && clipboardColor.hex}</p>
         </span>
       </div>
       <Nav colorsHistory={colorsHistory}
         setClipboardColor={setClipboardColor}
         setIsSettingsModalOpen={setIsSettingsModalOpen} />
       <ul className="c-color-grid">
-        {colorsArray && colorsArray.map((color, i) => {
+        {formattedColors && formattedColors.map((color, i) => {
           return <ColorCell
             color={color}
             setClipboardColor={setClipboardColor}
             session={session}
             key={i} />
         })}
-        {colorsArray.length === 0 &&
+        {formattedColors.length === 0 &&
           <ColorCell
             color={{
               name: 'Try loading some colors by clicking the gear icon in the nav bar',
-              hexVal: '909090',
+              hex: '909090',
             }}
             setClipboardColor={() => { return; }}
             session={session}

@@ -1,0 +1,39 @@
+hsl(195, 100 %, 50 %)
+color - overlay:#1e1e1e;
+rgb(0, 191, 255);
+#00bfff;
+color - mid - dark - gray:#555555;
+color - dusty - gray:#999999;
+color - gray - whisper:#e5e5e5;
+alizarin:#e74c3c;
+carrot:#e67e22;
+color - yellow:#fff2c2;
+sunflower:#f1c40f;
+color - yellow - highlight:#ffe600;
+nephtiris:#27ae60;
+emerald:#2ecc71;
+color - green - mint:#56c288;
+turquoise:#1abc9c;
+greensea:#16a085;
+concrete:#95a5a6;
+clouds:#ecf0f1;
+color - dark - slate:#abb1b3;
+color - darker - gray:#586267;
+color - darker - slate:#82898d;
+color - white - blue:#f2faff;
+color - sky - blue:#b7d3e5;
+blue:#2980b9;
+color - curious - blue:#3395d6;
+color - blue:#0099ff;
+color - light - blue:#d6dfe5;
+color - slate - blue:#d6dfe5;
+color - deep - blue:#0089e5;
+color - dark - blue:#006ab2;
+color - blue - endeavour:#0061aa;
+color - blue - dark:#045eb5;
+midnightblue:#2c3e50;
+color - lighter - blue:#fafbfc;
+color - purple - gray:#6171a9;
+amethyst:#9b59b6;
+
+http://localhost:3000/color-sorter/?color-overlay=1e1e1e&color-mid-dark-gray=555555&color-dusty-gray=999&color-gray-whisper=e5e5e5&alizarin=e74c3c&carrot=e67e22&color-yellow=fff2c2&sunflower=f1c40f&color-yellow-highlight=ffe600&nephtiris=27ae60&emerald=2ecc71&color-green-mint=56c288&greensea=16a085&turquoise=1abc9c&concrete=95a5a6&clouds=ecf0f1&color-dark-slate=abb1b3&color-darker-gray=586267&color-darker-slate=82898d&color-sky-blue=b7d3e5&color-white-blue=f2faff&color-light-blue=d6dfe5&color-slate-blue=d6dfe5&blue=2980b9&color-curious-blue=3395d6&color-dark-blue=006ab2&color-deep-blue=0089e5&color-blue=0099ff&color-blue-endeavour=0061aa&color-blue-dark=045eb5&color-lighter-blue=fafbfc&midnightblue=2c3e50&color-purple-gray=6171a9&amethyst=9b59b6

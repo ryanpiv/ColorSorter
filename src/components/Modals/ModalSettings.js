@@ -4,11 +4,13 @@ import { replaceURLState } from '../Utils/URL';
 import { hexOrRgbMatch, sassVarMatch } from '../Utils/Colors';
 import ModalSettingsCopyType from './ModalSettingsCopyType';
 import ModalSettingsDisplayType from './ModalSettingsDisplayType';
+import { colorRegEx } from '../ColorCell/ColorRegEx';
+import { constructColor } from '../ColorCell/ColorSort';
 
 Modal.setAppElement('#root');
 
 export const ModalSettings = ({ ...props }) => {
-  const { isSettingsModalOpen, setIsSettingsModalOpen, session, setSession, setUrlParams } = props;
+  const { isSettingsModalOpen, setIsSettingsModalOpen, session, setSession, setColorsArray } = props;
   const { settings } = session;
   const colorsTextArea = useRef();
 
@@ -17,52 +19,32 @@ export const ModalSettings = ({ ...props }) => {
   }
 
   const handleGenerateClick = () => {
-    const text = colorsTextArea.current.value.replace(/[\n\r]+/g, '').replace(/\s+/g, '').trim();
-    const regExArr = [
-      /\$(.+?):(.+?);/g, // sassVarAndValueRegex
-      // /\#\w{1,8}[;,]/g, // hexCommaRegex
-      // /&\w+[=]\w+/g, // queryStringRegex
-    ];
+    // Get text from field, trim space, split based on semicolon
+    const text = colorsTextArea.current.value.trim().split(/[\n;]+/g);
+    let colorsArr = [];
 
-    /*
-      1. Loop through regex array, most general to most specific order of regex querying
-      2. attempt to match the current type of regex
-      3. if values are found, massage the array for the type of regex
-    */
+    text.map(colorValue => {
+      // Remove white space from string, match name based on : otherwise set name to the color
+      let color = colorValue.replace(/[\n\r]+/g, '').replace(/\s+/g, '');
+      let name = color.match(/(.+?)(?=:)/g) ? color.match(/(.+?)(?=:)/)[0] : color;
 
-    regExArr.forEach((value, i) => {
-      const matchedArr = text.match(value);
-      if (matchedArr.length > 0) {
-        switch (i) {
-          case 0:
-            // sassVarAndValueRegex
-            seperateKeysFromValues(matchedArr);
-            break;
-          case 1:
-            // hexCommaRegex
-            break;
-          case 2:
-            // queryStringRegex
-            break;
-          default:
-            break;
+      // Loop through regex and attempt to match each color type
+      // Create color object when a match is found
+      for (const regExValue of colorRegEx) {
+        const matched = color.match(regExValue);
+        if (matched && matched.length > 0) {
+          colorsArr.push(
+            constructColor({ name, color: matched[0] })
+          );
+          break;
         }
       }
-    });
-  }
+    })
 
-  const seperateKeysFromValues = (colorsArr) => {
-    const params = new URLSearchParams();
-
-    colorsArr.forEach((value, i) => {
-      let color = hexOrRgbMatch(value);
-      let name = sassVarMatch(value);
-      params.set(name, color);
-    });
-
-    setUrlParams(params);
-    replaceURLState(params);
-    setIsSettingsModalOpen(false);
+    if (colorsArr.length > 0) {
+      setColorsArray(colorsArr);
+      setIsSettingsModalOpen(false);
+    }
   }
 
   return (
