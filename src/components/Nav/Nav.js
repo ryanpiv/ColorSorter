@@ -39,7 +39,7 @@ export const Nav = ({ ...props }) => {
           />
         })}
         <li className="nav__li nav__li--no-border nav__li--left-auto">
-          <a href="https://github.com/RyanPiv/color-sorter" target="_blank" className="nav__li-icon nav__li-icon--github"></a>
+          <a href="https://github.com/RyanPiv/color-sorter" target="_blank" rel="noopener noreferrer" className="nav__li-icon nav__li-icon--github">Github</a>
         </li>
         <li className="nav__li nav__li--no-border" onClick={handleDownloadClick}>
           <i className="nav__li-icon nav__li-icon--download"></i>

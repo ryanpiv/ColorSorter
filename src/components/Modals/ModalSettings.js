@@ -21,10 +21,10 @@ export const ModalSettings = ({ ...props }) => {
     const text = colorsTextArea.current.value.trim().split(/[\n;]+/g);
     let colorsArr = [];
 
-    text.map(colorValue => {
+    text.forEach(colorValue => {
       // Remove white space from string, match name based on : otherwise set name to the color
       let color = colorValue.replace(/[\n\r]+/g, '').replace(/\s+/g, '');
-      let name = color.match(/(.+?)(?=:)/g) ? color.match(/(.+?)(?=:)/)[0] : color;
+      let name = color.match(/(.+?)(?=:)/g) ? color.match(/(.+?)(?=:)/)[0] : color.replace('#', '');
 
       // Loop through regex and attempt to match each color type
       // Create color object when a match is found
