@@ -1,17 +1,14 @@
 .nav {
   width: 100%;
-  max-width: 100%;
-  min-height: 50px;
   background-color: #dcdcdc;
 
   &__brand {
-    font-size: 16px;
+    font-size: 1.6rem;
     font-weight: 600;
   } // .nav__brand
 
   &__color {
     width: 80px;
-    height: 60px;
     border: 1px solid black;
     border-radius: 5px;
   } // .nav__color
@@ -21,8 +18,6 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    min-width: 40px;
-    min-height: 40px;
     margin: 10px;
 
     &:hover {
@@ -44,8 +39,9 @@
   } // .nav__li--left-auto
 
   &__li-icon {
-    width: 40px;
-    height: 40px;
+    --size: 40px;
+    width: var(--size);
+    height: var(--size);
     background-size: cover;
   } // .nav__li-icon
 
@@ -65,5 +61,6 @@
   &__ul {
     width: 100%;
     min-height: var(--nav-height);
+    overflow-x: scroll;
   } // .nav__ul
 } // .nav

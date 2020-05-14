@@ -1,9 +1,11 @@
-:root {
-  --site-min-width: 375px;
-  --nav-height: 80px;
+html {
+  font-size: 62.5%; // 1rem = 10px / 16px = 0.625 
 }
 
 body {
   color: #e2e2e2;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1;
+  font-family: var(--font-family-helvetica);
+  font-size: var(--font-size-default);
+  min-width: var(--site-min-width);
 }
