@@ -1,1 +1,8 @@
-$font-family-helvetica: "Helvetica Neue", helvetica, arial, sans-serif;
+:root {
+    // Sizes
+    --site-min-width: 375px;
+    --nav-height: 80px;
+    // Fonts
+    --font-family-helvetica: "Helvetica Neue", helvetica, arial, sans-serif;
+    --font-size-default: 1.6rem;
+}

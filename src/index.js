@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles/reset.css';
 import './styles/main.scss';
 import ColorSorter from './ColorSorter';
 import * as serviceWorker from './serviceWorker';
