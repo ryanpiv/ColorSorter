@@ -9,7 +9,7 @@
     "chroma-js": "^2.1.0",
     "css.gg": "^2.0.0",
     "eslint-plugin-jsx": "^0.1.0",
-    "node-sass": "^4.14.0",
+    "node-sass": "^7.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
